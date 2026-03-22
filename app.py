@@ -42,6 +42,31 @@ if "status" not in st.session_state:
 if "history" not in st.session_state:
     st.session_state.history = []
 
+# Guess History Section
+st.sidebar.divider()
+st.sidebar.subheader("📋 Guess History")
+
+if st.session_state.history:
+    for i, entry in enumerate(st.session_state.history, 1):
+        guess = entry["guess"]
+        outcome = entry["outcome"]
+        
+        # Determine emoji based on outcome
+        if outcome == "Win":
+            emoji = "✅"
+        elif outcome == "Too High":
+            emoji = "📈"
+        elif outcome == "Too Low":
+            emoji = "📉"
+        elif outcome == "Invalid":
+            emoji = "❌"
+        else:
+            emoji = "❓"
+        
+        st.sidebar.text(f"{emoji} Guess {i}: {guess}")
+else:
+    st.sidebar.caption("No guesses yet")
+
 st.subheader("Make a guess")
 
 st.info(
@@ -88,12 +113,11 @@ if submit:
     ok, guess_int, err = parse_guess(raw_guess)
 
     if not ok:
-        st.session_state.history.append(raw_guess)
+        st.session_state.history.append({"guess": raw_guess, "outcome": "Invalid"})
         st.error(err)
     else:
-        st.session_state.history.append(guess_int)
-
         outcome, message = check_guess(guess_int, st.session_state.secret)
+        st.session_state.history.append({"guess": guess_int, "outcome": outcome})
 
         if show_hint:
             st.warning(message)
