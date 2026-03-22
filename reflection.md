@@ -103,3 +103,6 @@ Manual test 3 - String conversion bug:
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+## ✅ Challenge 1: Pytest Results
+![pytest results](pytest_results.png)
