@@ -106,3 +106,24 @@ Manual test 3 - String conversion bug:
 
 ## ✅ Challenge 1: Pytest Results
 ![pytest results](pytest_results.png)
+
+## 5. AI Model Comparison
+
+**Bug tested:** Backwards hint direction in check_guess
+
+**Copilot's explanation:**
+- Identified the bug immediately and fixed it automatically
+- Moved the logic to logic_utils.py at the same time
+- Fixed the code without explaining the "why" in detail
+
+**ChatGPT's explanation:**
+- Gave a clear step-by-step explanation of WHY the hints 
+  were wrong using a concrete example (guess=8, secret=5)
+- Explained the logic: guess > secret means go LOWER
+- Provided a fixed version with clear reasoning
+- Did not make changes to the code directly
+
+**Which was better?**
+- Copilot was better for FIXING the code quickly and automatically
+- ChatGPT was better for EXPLAINING the reasoning behind the bug
+- Together they complemented each other well
